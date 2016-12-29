@@ -3,23 +3,11 @@ var app = express();
 var dataFile = require('./data/data.json');
 
 app.set('port', process.env.PORT || 3000);
+app.set('appData', dataFile);
 
-app.get('/', function(req, res) {
-    var info = "";
-    dataFile.speakers.forEach(function(item) {
-        info += `
-            <li>
-                <h2>${item.name}</h2>
-                <p>${item.summary}</p>
-            </li>
-        `;
+app.use(require('./routes/index'));
+app.use(require('./routes/speaker'));
 
-    });
-    res.send(`
-        <h1>Run with express</h1>
-        ${info}
-        `);
-});
 
 var server = app.listen(app.get('port'), function() {
     console.log('Ready on port ' + app.get('port'));
