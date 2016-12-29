@@ -1,10 +1,12 @@
 var express = require('express');
+var reload = require('reload');
 var app = express();
 var dataFile = require('./data/data.json');
 
 app.set('port', process.env.PORT || 3000);
 app.set('appData', dataFile);
 
+app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/speaker'));
 
@@ -13,6 +15,7 @@ var server = app.listen(app.get('port'), function() {
     console.log('Ready on port ' + app.get('port'));
 });
 
+reload(server, app);
 // var http = require('http');
 
 // var myServer = http.createServer(function(request, response){

@@ -6,10 +6,11 @@
   "repository": "",
   "author": "Amir Shrestha",
   "scripts": {
-    "start": "node app/app.js"
+    "start": "nodemon -e css,ejs,js,json --watch app"
   },
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "reload": "^1.1.0"
   }
 }
