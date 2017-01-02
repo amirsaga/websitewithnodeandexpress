@@ -15,6 +15,7 @@ app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/speaker'));
 app.use(require('./routes/feedback'));
+app.use(require('./routes/api'));
 
 
 var server = app.listen(app.get('port'), function() {
